@@ -1,0 +1,28 @@
+{
+  "name": "benkesmith-native-timer",
+  "version": "1.0.0",
+  "description": "A Cordova plugin as an alternative to the Javascript setTimeout() function.",
+  "cordova": {
+    "id": "com.benkesmith.nativetimer",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ragcsalo/benkesmith-native-timer.git"
+  },
+  "keywords": [
+    "cordova",
+    "timer",
+    "plugin"
+  ],
+  "author": "Benke Smith <benke.smith@gmail.com>",
+  "license": "Apache-2.0",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=6.0.0"
+    }
+  ]
+}

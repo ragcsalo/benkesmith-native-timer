@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="com.benkesmith.nativetimer" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>NativeTimer</name>
+    <description>Native Timer for Cordova</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova, timer, plugin</keywords>
+
+    <js-module src="www/NativeTimer.js" name="NativeTimer">
+        <clobbers target="NativeTimer" />
+    </js-module>
+
+	  <platform name="android">
+		<source-file src="src/android/NativeTimer.java" target-dir="src/com/benkesmith/nativetimer" />
+	  </platform>
+
+    <platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="NativeTimer">
+				<param name="ios-package" value="NativeTimer" />
+			</feature>
+		</config-file>
+		<source-file src="src/ios/NativeTimer.h" />
+		<source-file src="src/ios/NativeTimer.m" />
+    </platform>
+</plugin>
