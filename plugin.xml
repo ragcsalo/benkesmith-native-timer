@@ -5,21 +5,27 @@
     <license>Apache 2.0</license>
     <keywords>cordova, timer, plugin</keywords>
 
+    <!-- Shared JS module -->
     <js-module src="www/NativeTimer.js" name="NativeTimer">
         <clobbers target="NativeTimer" />
     </js-module>
 
-	  <platform name="android">
-		<source-file src="src/android/NativeTimer.java" target-dir="src/com/benkesmith/nativetimer" />
-	  </platform>
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="NativeTimer">
+                <param name="android-package" value="com.benkesmith.nativetimer.NativeTimer" />
+            </feature>
+        </config-file>
+	<source-file src="src/android/NativeTimer.java" target-dir="src/com/benkesmith/nativetimer" />
+    </platform>
 
     <platform name="ios">
-		<config-file target="config.xml" parent="/*">
-			<feature name="NativeTimer">
-				<param name="ios-package" value="NativeTimer" />
-			</feature>
-		</config-file>
-		<source-file src="src/ios/NativeTimer.h" />
-		<source-file src="src/ios/NativeTimer.m" />
+	<config-file target="config.xml" parent="/*">
+		<feature name="NativeTimer">
+			<param name="ios-package" value="NativeTimer" />
+		</feature>
+	</config-file>
+	<source-file src="src/ios/NativeTimer.h" />
+	<source-file src="src/ios/NativeTimer.m" />
     </platform>
 </plugin>
