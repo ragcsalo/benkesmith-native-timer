@@ -10,7 +10,14 @@
 
 - (void)setTimeout:(CDVInvokedUrlCommand*)command {
     NSNumber *timerId = [command.arguments objectAtIndex:0];
-    int delayMs = [[command.arguments objectAtIndex:1] intValue];
+
+    // Validate delayMs
+    id delayArg = [command.arguments objectAtIndex:1];
+    if (delayArg == [NSNull null] || ![delayArg respondsToSelector:@selector(intValue)]) {
+        NSLog(@"Invalid delay value passed to setTimeout");
+        return;
+    }
+    int delayMs = [delayArg intValue];
 
     dispatch_block_t block = dispatch_block_create(0, ^{
         CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
@@ -22,6 +29,7 @@
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayMs * NSEC_PER_MSEC)), dispatch_get_main_queue(), block);
 }
+
 
 - (void)clearTimeout:(CDVInvokedUrlCommand*)command {
     NSNumber *timerId = [command.arguments objectAtIndex:0];
