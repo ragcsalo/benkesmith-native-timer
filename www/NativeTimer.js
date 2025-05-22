@@ -5,6 +5,17 @@ var callbacks = {};
 var NativeTimer = {
   setTimeout: function (callback, ms) {
     const id = nextId++;
+
+    if (typeof callback !== 'function') {
+      return id;
+    }
+
+    if (ms === 0) {
+      // Call the callback immediately without invoking native code
+      callback();
+      return id;
+    }
+
     callbacks[id] = callback;
     exec(
       () => {
@@ -28,4 +39,3 @@ var NativeTimer = {
 };
 
 module.exports = NativeTimer;
-
