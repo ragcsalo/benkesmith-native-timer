@@ -4,7 +4,6 @@ import org.apache.cordova.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import android.os.Handler;
-import android.util.Log;
 
 import java.util.HashMap;
 
@@ -17,9 +16,6 @@ public class NativeTimer extends CordovaPlugin {
     if ("setTimeout".equals(action)) {
       final int id = args.getInt(0);
       int delay = args.getInt(1);
-
-      // Log the timer creation with ID and delay
-      Log.d("NativeTimer", "setTimeout called with ID: " + id + ", delay: " + delay + "ms");
 
       Runnable task = () -> {
         callbackContext.success();
@@ -38,4 +34,3 @@ public class NativeTimer extends CordovaPlugin {
     return false;
   }
 }
-
